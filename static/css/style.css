@@ -457,7 +457,7 @@ body {
   color: var(--text-primary);
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
-  transition: border-color var(--transition), background-color var(--transition);
+  transition: border-color var(--transition), background-color var(--transition), color var(--transition);
 }
 .form-control:focus, .form-select:focus {
   background-color: var(--bg-card);
@@ -465,13 +465,237 @@ body {
   color: var(--text-primary);
   box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
 }
+.form-control::placeholder { color: var(--text-muted); opacity: 1; }
 .form-label { font-size: 0.85rem; margin-bottom: 4px; color: var(--text-primary); }
-.btn-primary { background: linear-gradient(135deg, #3b82f6, #6366f1); border: none; border-radius: var(--radius-sm); }
-.btn-primary:hover { background: linear-gradient(135deg, #2563eb, #4f46e5); border: none; }
+.btn-primary { background: linear-gradient(135deg, #3b82f6, #6366f1); border: none; border-radius: var(--radius-sm); color: #fff; }
+.btn-primary:hover { background: linear-gradient(135deg, #2563eb, #4f46e5); border: none; color: #fff; }
 .btn-success { border-radius: var(--radius-sm); }
 
 /* Toast */
 .toast { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); }
+
+/* ═══════════  DARK MODE — Bootstrap overrides  ═══════════
+   Bootstrap hardcodes many colours. These rules force every
+   element to respect our CSS variables when dark mode is on.
+═══════════════════════════════════════════════════════════ */
+
+/* Base text & backgrounds */
+[data-theme="dark"] body,
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] li,
+[data-theme="dark"] td,
+[data-theme="dark"] th,
+[data-theme="dark"] label,
+[data-theme="dark"] small,
+[data-theme="dark"] .small {
+  color: var(--text-primary);
+}
+
+/* Muted text */
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .form-text {
+  color: var(--text-muted) !important;
+}
+
+/* Navbar */
+[data-theme="dark"] #mainNav,
+[data-theme="dark"] .navbar {
+  background-color: var(--nav-bg) !important;
+  border-color: var(--nav-border) !important;
+}
+[data-theme="dark"] .navbar-brand,
+[data-theme="dark"] .navbar-toggler {
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .navbar-toggler { border-color: var(--border) !important; }
+[data-theme="dark"] .navbar-toggler .bi { color: var(--text-primary); }
+
+/* Cards */
+[data-theme="dark"] .card {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .card-header,
+[data-theme="dark"] .card-footer {
+  background-color: transparent !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .card-body { color: var(--text-primary) !important; }
+
+/* Form controls */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] textarea,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input[type="email"] {
+  background-color: var(--bg-base) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--accent) !important;
+}
+[data-theme="dark"] .form-control::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 1;
+}
+[data-theme="dark"] .form-label,
+[data-theme="dark"] label {
+  color: var(--text-primary) !important;
+}
+/* Fix dropdown arrow color in dark mode */
+[data-theme="dark"] .form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") !important;
+}
+
+/* Buttons */
+[data-theme="dark"] .btn-outline-secondary {
+  color: var(--text-muted) !important;
+  border-color: var(--border) !important;
+}
+[data-theme="dark"] .btn-outline-secondary:hover {
+  background-color: var(--bg-base) !important;
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .btn-outline-danger {
+  color: #f87171 !important;
+  border-color: #f87171 !important;
+}
+[data-theme="dark"] .btn-success {
+  background-color: #059669 !important;
+  border-color: #059669 !important;
+  color: #fff !important;
+}
+[data-theme="dark"] .btn-success:hover {
+  background-color: #047857 !important;
+  border-color: #047857 !important;
+}
+[data-theme="dark"] .btn-primary {
+  color: #fff !important;
+}
+
+/* Badges */
+[data-theme="dark"] .badge.bg-secondary { background-color: #374151 !important; color: #e2e8f0 !important; }
+[data-theme="dark"] .badge.bg-success   { background-color: #065f46 !important; color: #6ee7b7 !important; }
+[data-theme="dark"] .badge.bg-warning   { background-color: #78350f !important; color: #fcd34d !important; }
+[data-theme="dark"] .badge.bg-info      { background-color: #1e3a5f !important; color: #93c5fd !important; }
+[data-theme="dark"] .badge.bg-primary   { background-color: #1e3a8a !important; color: #bfdbfe !important; }
+[data-theme="dark"] .badge.bg-danger    { background-color: #7f1d1d !important; color: #fca5a5 !important; }
+
+/* Progress bars */
+[data-theme="dark"] .progress { background-color: var(--bg-base) !important; }
+
+/* List groups */
+[data-theme="dark"] .list-group-item {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Tables */
+[data-theme="dark"] table,
+[data-theme="dark"] .table { color: var(--text-primary) !important; }
+[data-theme="dark"] .table th,
+[data-theme="dark"] .table td { border-color: var(--border) !important; color: var(--text-primary) !important; }
+
+/* Dropdowns / collapse */
+[data-theme="dark"] .navbar-collapse { background-color: var(--nav-bg); }
+[data-theme="dark"] .dropdown-menu {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border) !important;
+}
+[data-theme="dark"] .dropdown-item { color: var(--text-primary) !important; }
+[data-theme="dark"] .dropdown-item:hover { background-color: var(--bg-base) !important; }
+
+/* Toast */
+[data-theme="dark"] .toast {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+[data-theme="dark"] .toast .btn-close { filter: invert(1); }
+
+/* Headings */
+[data-theme="dark"] h1, [data-theme="dark"] h2,
+[data-theme="dark"] h3, [data-theme="dark"] h4,
+[data-theme="dark"] h5, [data-theme="dark"] h6 {
+  color: var(--text-primary) !important;
+}
+
+/* Quick prompt buttons */
+[data-theme="dark"] .btn-quick {
+  background: var(--bg-base) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .btn-quick:hover {
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+}
+[data-theme="dark"] .btn-quick-sm {
+  background: var(--bg-base) !important;
+  border-color: var(--border) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Family member card */
+[data-theme="dark"] .family-member-card {
+  background: var(--bg-base) !important;
+  border-color: var(--border) !important;
+}
+[data-theme="dark"] .member-name  { color: var(--text-primary) !important; }
+[data-theme="dark"] .member-details { color: var(--text-muted) !important; }
+
+/* Stat cards */
+[data-theme="dark"] .stat-card { background: var(--bg-card) !important; }
+[data-theme="dark"] .stat-val   { color: var(--text-primary) !important; }
+[data-theme="dark"] .stat-label { color: var(--text-muted) !important; }
+
+/* Calorie rows */
+[data-theme="dark"] .calorie-row { color: var(--text-primary) !important; border-color: var(--border) !important; }
+
+/* Meal type cards */
+[data-theme="dark"] .meal-type-card {
+  background: var(--bg-card) !important;
+  border-color: var(--border) !important;
+}
+[data-theme="dark"] .meal-item { color: var(--text-primary) !important; border-color: var(--border) !important; }
+
+/* Info box */
+[data-theme="dark"] .info-box { background: var(--accent-soft) !important; color: var(--text-muted) !important; }
+
+/* Analysis box */
+[data-theme="dark"] .analysis-box { color: var(--text-primary) !important; }
+
+/* Tip box */
+[data-theme="dark"] .tip-box  { background: var(--accent-soft) !important; }
+[data-theme="dark"] .tip-text { color: var(--text-muted) !important; }
+[data-theme="dark"] .tip-label { color: var(--text-primary) !important; }
+
+/* Food calorie list */
+[data-theme="dark"] .food-cal-item { color: var(--text-primary) !important; border-color: var(--border) !important; }
+[data-theme="dark"] .food-cal-item:hover { background: var(--bg-base) !important; }
+
+/* Profile summary */
+[data-theme="dark"] .profile-key { color: var(--text-muted) !important; }
+[data-theme="dark"] .profile-val { color: var(--text-primary) !important; }
+
+/* BMI scale labels */
+[data-theme="dark"] .bmi-scale-labels { color: var(--text-muted) !important; }
+[data-theme="dark"] .bmi-pointer      { color: var(--text-primary) !important; }
+[data-theme="dark"] .bmi-legend .legend-item { color: var(--text-muted) !important; }
+
+/* ul/li in cards (meal tips, etc.) */
+[data-theme="dark"] ul li,
+[data-theme="dark"] ol li { color: var(--text-primary) !important; }
 
 /* Responsive */
 @media (max-width: 768px) {
